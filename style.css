@@ -8,3 +8,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
 }
+
+:root {
+    --primary-color: #1992d4;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --main-text-color: #686868;
+    --input-border-radius: 16px;
+    --input-border-style: none;
+    --card-border-radius: 8px;
+    --card-box-shadow: 2px 4px 2px var(--shadow-color);
+    --card-padding: 18px 26px;
+}
