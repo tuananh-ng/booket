@@ -19,3 +19,8 @@ body {
     --card-box-shadow: 2px 4px 2px var(--shadow-color);
     --card-padding: 18px 26px;
 }
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
