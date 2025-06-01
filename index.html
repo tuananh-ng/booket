@@ -23,7 +23,33 @@
 
         </div>
         <div class="adding-form">
-
+            <form action="" method="post">
+                <div class="form-row">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="book-title">
+                </div>
+                <div class="form-row">
+                    <label for="author">Author(s)</label>
+                    <input type="text" id="author" name="book-author">
+                </div>
+                <fieldset class="form-row">
+                    <legend>Read Status</legend>
+                    <input id="read-status-0"
+                            name="read-status"
+                            type="radio"
+                            value="unread"
+                            checked>
+                    <label for="read-status-0" class="radio-label">Unread</label>
+                    <input id="read-status-1"
+                            name="read-status"
+                            type="radio"
+                            value="read">
+                    <label for="read-status-1" class="radio-label">Read</label>
+                </fieldset>
+                <div class="form-row">
+                    <button class="add">Add</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
