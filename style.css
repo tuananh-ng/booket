@@ -7,6 +7,10 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
+
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: clamp(80px, 10%, 120px) 5fr;
 }
 
 :root {
@@ -23,4 +27,11 @@ body {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+.header {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: 3fr repeat(3, minmax(80px, 0.4fr));
 }
