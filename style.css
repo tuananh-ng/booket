@@ -43,3 +43,13 @@ a {
     color: white;
     font-weight: bold;
 }
+
+button {
+    font: inherit;
+    font-weight: bold;
+    width: clamp(mincontent, 75%, 250px);
+    height: clamp(30px, 25%, 60px);
+    border-style: var(--input-border-style);
+    border-radius: var(--input-border-radius);
+    cursor: pointer;   
+}
