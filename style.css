@@ -53,3 +53,8 @@ button {
     border-radius: var(--input-border-radius);
     cursor: pointer;   
 }
+
+button.add {
+    color: white;
+    background-color: var(--secondary-color);
+}
