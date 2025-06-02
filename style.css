@@ -35,4 +35,10 @@ a {
 
     display: grid;
     grid-template-columns: 3fr repeat(3, minmax(80px, 0.4fr));
+    align-items: center;
+    margin-bottom: 12px;
+
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
 }
