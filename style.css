@@ -106,3 +106,15 @@ button.add:hover {
     box-shadow: none;
     outline: none;
 }
+
+.form-row label {
+    margin-bottom: 8px;
+}
+
+.form-row button {
+    font-size: 16px;
+    padding: 10px 40px;
+}
+.form-row button.add:focus {
+    background-color: #407fc7;
+}
