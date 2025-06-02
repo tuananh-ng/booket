@@ -140,3 +140,18 @@ fieldset.form-row .radio-option {
 fieldset.form-row .radio-option:last-child {
     margin-top: 4px;
 }
+
+#closing-button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+#closing-button button {
+    font-weight: 200;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: -20px;
+    right: -16px;
+}
