@@ -118,3 +118,11 @@ button.add:hover {
 .form-row button.add:focus {
     background-color: #407fc7;
 }
+
+fieldset.form-row {
+    border: none;
+    margin-bottom: 28px;
+}
+fieldset.form-row legend {
+    margin-bottom: 8px;
+}
