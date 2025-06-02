@@ -45,6 +45,13 @@ a {
     font-weight: bold;
 }
 
+.header .branding {
+    display: flex;
+    align-content: center;
+    gap: 8px;
+    font-size: 1.75rem;
+}
+
 button {
     font: inherit;
     font-weight: bold;
