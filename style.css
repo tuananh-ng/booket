@@ -69,3 +69,11 @@ button.add {
 button.add:hover {
     background-color: #76aeed;
 }
+
+.adding-form {
+    background-color: white;
+    margin-right: 18px;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    border: 1px solid #d6d9dc;
+}
