@@ -76,6 +76,7 @@ button.add:hover {
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     border: 1px solid #d6d9dc;
+    box-shadow: var(--card-box-shadow);
 }
 
 form {
