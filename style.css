@@ -78,7 +78,7 @@ button.add:hover {
     border: 1px solid #d6d9dc;
 }
 
-.adding-form form {
+form {
     border-style: var(--input-border-style);
     padding: 5px;
 }
@@ -154,4 +154,9 @@ fieldset.form-row .radio-option:last-child {
     position: absolute;
     top: -20px;
     right: -16px;
+}
+
+.books {
+    width: 100%;
+    margin-left: 18px;
 }
