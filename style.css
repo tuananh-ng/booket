@@ -10,7 +10,7 @@ body {
     background-color: #e2e8f0;
 
     display: grid;
-    grid-template-columns: 5fr 1fr;
+    grid-template-columns: 5fr minmax(250px, 1fr);
     grid-template-rows: clamp(80px, 10%, 120px) 5fr;
 }
 
@@ -19,7 +19,7 @@ body {
     --secondary-color: #42b1ec;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --main-text-color: #686868;
-    --input-border-radius: 16px;
+    --input-border-radius: 3px;
     --input-border-style: none;
     --card-border-radius: 8px;
     --card-box-shadow: 2px 4px 2px var(--shadow-color);
