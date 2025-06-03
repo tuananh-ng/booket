@@ -35,7 +35,7 @@ function addBookItemToPage(book) {
     } else {
         newBookItem.classList.add('unread');
     }
-    
+
     const newBookCover = document.createElement('div');
     newBookCover.classList.toggle('cover');
     const newBookTitle = document.createElement('p');
@@ -50,6 +50,7 @@ function addBookItemToPage(book) {
     const newBookRemoveBtn = document.createElement('button');
     newBookRemoveBtn.classList.toggle('remove-btn');
     newBookRemoveBtn.textContent = 'Remove';
+    newBookRemoveBtn.addEventListener('click', () => removeBookItemFromPage(newBookItem));
 
     newBookItem.appendChild(newBookCover);
     newBookItem.appendChild(newBookTitle);
@@ -59,6 +60,15 @@ function addBookItemToPage(book) {
 
     const libraryItem = document.querySelector('.books');
     libraryItem.appendChild(newBookItem);
+}
+
+function removeBookItemFromPage(bookItem) {
+    if (!bookItem || !bookItem.classList.contains('book')) {
+        return;
+    }
+
+    const libraryItem = document.querySelector('.books');
+    libraryItem.removeChild(bookItem);
 }
 
 function Book(title, authors, readStatus = false) {
