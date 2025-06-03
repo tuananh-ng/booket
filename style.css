@@ -162,6 +162,10 @@ fieldset.form-row .radio-option:last-child {
 }
 
 .books {
-    width: 100%;
+    grid-area: 2 / 1 / -1 / 2;
     margin-left: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2px;
 }
