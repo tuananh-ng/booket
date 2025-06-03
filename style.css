@@ -152,6 +152,7 @@ fieldset.form-row .radio-option:last-child {
     position: relative;
 }
 #closing-button button {
+    font-size: 0.8rem;
     font-weight: 200;
     border: none;
     background-color: transparent;
