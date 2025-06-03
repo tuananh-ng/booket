@@ -12,6 +12,47 @@ function addBookToLibrary() {
     library.push(newBook);
 }
 
+function addBookItemToPage(book) {
+    if (!book) {
+        return;
+    }
+
+    let title = book.getTitle();
+    let authors = book.getAuthors();
+    let readStatus = book.getReadStatus();
+
+    const newBookItem = document.createElement('div');
+    newBookItem.classList.toggle('book');
+    if (readStatus) {
+        newBookItem.classList.add('read');
+    } else {
+        newBookItem.classList.add('unread');
+    }
+    const newBookCover = document.createElement('div');
+    newBookCover.classList.toggle('cover');
+    const newBookTitle = document.createElement('p');
+    newBookTitle.classList.toggle('title');
+    newBookTitle.textContent = title;
+    const newBookAuthor = document.createElement('p');
+    newBookAuthor.classList.toggle('author');
+    newBookAuthor.textContent = authors;
+    const newBookEditBtn = document.createElement('button');
+    newBookEditBtn.classList.toggle('edit-btn');
+    newBookEditBtn.textContent = 'Edit';
+    const newBookRemoveBtn = document.createElement('button');
+    newBookRemoveBtn.classList.toggle('remove-btn');
+    newBookRemoveBtn.textContent = 'Remove';
+
+    newBookItem.appendChild(newBookCover);
+    newBookItem.appendChild(newBookTitle);
+    newBookItem.appendChild(newBookAuthor);
+    newBookItem.appendChild(newBookEditBtn);
+    newBookItem.appendChild(newBookRemoveBtn);
+
+    const libraryItem = document.querySelector('.books');
+    libraryItem.appendChild(newBookItem);
+}
+
 function Book(title, authors, readStatus = false) {
     if (!new.target) {
         throw Error("Attempted to initialize without the 'new' operator!");
