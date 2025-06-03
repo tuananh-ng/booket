@@ -1,5 +1,12 @@
 const library = [];
 
+const bookForm = document.querySelector('form');
+bookForm.addEventListener('submit', () => {
+    event.preventDefault();
+    addBookToLibrary();
+    addBookItemToPage(library.at(-1));
+});
+
 function addBookToLibrary() {
     let title = document.querySelector('form input#title').value;
     let author = document.querySelector('form input#author').value;
@@ -28,6 +35,7 @@ function addBookItemToPage(book) {
     } else {
         newBookItem.classList.add('unread');
     }
+    
     const newBookCover = document.createElement('div');
     newBookCover.classList.toggle('cover');
     const newBookTitle = document.createElement('p');
