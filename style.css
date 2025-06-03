@@ -173,6 +173,7 @@ fieldset.form-row .radio-option:last-child {
 .book {
     display: grid;
     grid-template-rows: minmax(200px, 2fr) repeat(4, 0.5fr);
+    gap: 4px;
     width: clamp(200px, 100%, 300px);
     height: clamp(400px, 25%, 600px);
     
@@ -180,4 +181,11 @@ fieldset.form-row .radio-option:last-child {
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
     padding: var(--card-padding);
+}
+
+.book:nth-child(odd) > .cover {
+    background-color: var(--secondary-color);
+}
+.book:nth-child(even) > .cover {
+    background-color: orange;
 }
