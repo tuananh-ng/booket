@@ -200,3 +200,11 @@ fieldset.form-row .radio-option:last-child {
 .book > button.remove-btn {
     background-color: #ff4949;
 }
+.book.unread > .title::before {
+    color: red;
+    content: "✘ ";
+}
+.book.read > .title::before {
+    color: green;
+    content: "✔ ";
+}
