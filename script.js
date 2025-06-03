@@ -1,3 +1,17 @@
+const library = [];
+
+function addBookToLibrary() {
+    let title = document.querySelector('form input#title').value;
+    let author = document.querySelector('form input#author').value;
+    if (title.length === 0 || author.length === 0) {
+        return;
+    }
+    let readStatus = document.querySelector('form input#read-status-1').checked;
+
+    newBook = new Book(title, author, readStatus);
+    library.push(newBook);
+}
+
 function Book(title, authors, readStatus = false) {
     if (!new.target) {
         throw Error("Attempted to initialize without the 'new' operator!");
