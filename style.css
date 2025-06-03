@@ -182,6 +182,9 @@ fieldset.form-row .radio-option:last-child {
     box-shadow: var(--card-box-shadow);
     padding: var(--card-padding);
 }
+.book > .cover {
+    border-radius: var(--card-border-radius);
+}
 .book:nth-child(odd) > .cover {
     background-color: var(--secondary-color);
 }
