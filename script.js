@@ -7,6 +7,9 @@ bookForm.addEventListener('submit', () => {
     addBookItemToPage(library.at(-1));
 });
 
+const closingFormBtn = document.querySelector('#closing-button button');
+closingFormBtn.addEventListener('click', closeAddingForm);
+
 function addBookToLibrary() {
     let title = document.querySelector('form input#title').value;
     let author = document.querySelector('form input#author').value;
@@ -69,6 +72,15 @@ function removeBookItemFromPage(bookItem) {
 
     const libraryItem = document.querySelector('.books');
     libraryItem.removeChild(bookItem);
+}
+
+function closeAddingForm() {
+    const addingForm = document.querySelector('div.adding-form');
+    const libraryItem = document.querySelector('div.books');
+    const doc = document.querySelector('body');
+
+    doc.removeChild(addingForm);
+    libraryItem.style.gridColumn = '1 / -1';
 }
 
 function Book(title, authors, readStatus = false) {
