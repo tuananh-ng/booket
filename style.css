@@ -72,6 +72,8 @@ button.add:hover {
 }
 
 .adding-form {
+    grid-area: 2 / 2 / -1 / -1;
+    height: clamp(350px, 100%, 450px);
     background-color: white;
     margin-right: 18px;
     border-radius: var(--card-border-radius);
