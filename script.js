@@ -70,7 +70,7 @@ function addBookItemToPage(book) {
             'tag': 'button', 'class': 'remove-btn', 'textContent': 'Remove',
         },
     ];
-    for (component of components) {
+    for (const component of components) {
         const newComponent = document.createElement(component.tag);
         newComponent.classList.toggle(component.class);
         newComponent.textContent = component.textContent;
