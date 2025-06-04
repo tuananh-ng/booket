@@ -9,6 +9,18 @@ bookForm.addEventListener('submit', () => {
     }
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
+const libraryItem = document.querySelector('.books');
+libraryItem.addEventListener('click', () => {
+    if (event.target.className === 'remove-btn') {
+        let bookItem = event.target.parentElement;
+        for (let i = 0; i < library.length; i++) {
+            if (bookItem === library[i].slot) {
+                library.splice(i, 1);
+            }
+        }
+        removeBookItemFromPage(bookItem);
+    }
+});
 
 const closingFormBtn = document.querySelector('#closing-button button');
 closingFormBtn.addEventListener('click', closeAddingForm);
