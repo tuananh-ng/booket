@@ -32,7 +32,7 @@ function addBookItemToPage(book) {
     }
 
     let title = book.getTitle();
-    let authors = book.getAuthors();
+    let author = book.getAuthor();
     let readStatus = book.getReadStatus();
 
     const newBookItem = document.createElement('div');
@@ -50,7 +50,7 @@ function addBookItemToPage(book) {
     newBookTitle.textContent = title;
     const newBookAuthor = document.createElement('p');
     newBookAuthor.classList.toggle('author');
-    newBookAuthor.textContent = authors;
+    newBookAuthor.textContent = author;
     const newBookEditBtn = document.createElement('button');
     newBookEditBtn.classList.toggle('edit-btn');
     newBookEditBtn.textContent = 'Edit';
@@ -87,13 +87,13 @@ function closeAddingForm() {
     libraryItem.style.gridColumn = '1 / -1';
 }
 
-function Book(title, authors, readStatus = false) {
+function Book(title, author, readStatus = false) {
     if (!new.target) {
         throw Error("Attempted to initialize without the 'new' operator!");
     }
 
     this.title = title;
-    this.authors = authors;
+    this.author = author;
     this.readStatus = readStatus;
     this.uuid = crypto.randomUUID();
 }
@@ -102,8 +102,8 @@ function Book(title, authors, readStatus = false) {
 Book.prototype.getTitle = function () {
     return this.title;
 }
-Book.prototype.getAuthors = function () {
-    return this.authors;
+Book.prototype.getAuthor = function () {
+    return this.author;
 }
 Book.prototype.getReadStatus = function () {
     return this.readStatus;
@@ -116,8 +116,8 @@ Book.prototype.getUUID = function () {
 Book.prototype.setTitle = function (title) {
     this.title = title;
 }
-Book.prototype.setAuthors = function(authors) {
-    this.authors = authors;
+Book.prototype.setAuthor = function(author) {
+    this.author = author;
 }
 Book.prototype.setReadStatus = function(readStatus) {
     this.readStatus = readStatus;
