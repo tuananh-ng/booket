@@ -71,8 +71,9 @@ button.add:hover {
     background-color: #76aeed;
 }
 
-.adding-form {
+form {
     grid-area: 2 / 2 / -1 / -1;
+    position: relative;
     height: clamp(350px, 100%, 450px);
     background-color: white;
     margin-right: 18px;
@@ -80,11 +81,7 @@ button.add:hover {
     padding: var(--card-padding);
     border: 1px solid #d6d9dc;
     box-shadow: var(--card-box-shadow);
-}
-
-form {
     border-style: var(--input-border-style);
-    padding: 5px;
 }
 
 .form-row {
@@ -145,20 +142,14 @@ fieldset.form-row .radio-option:last-child {
     margin-top: 4px;
 }
 
-#closing-button {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-}
-#closing-button button {
+button.close {
     font-size: 0.8rem;
     font-weight: 200;
     border: none;
     background-color: transparent;
     position: absolute;
-    top: -20px;
-    right: -16px;
+    top: -18px;
+    right: 8px;
 }
 
 .books {
