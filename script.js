@@ -1,4 +1,5 @@
 const library = [];
+const libraryItem = document.querySelector('.books');
 
 const bookForm = document.querySelector('form');
 bookForm.addEventListener('submit', () => {
@@ -9,7 +10,6 @@ bookForm.addEventListener('submit', () => {
     }
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
-const libraryItem = document.querySelector('.books');
 libraryItem.addEventListener('click', () => {
     if (event.target.className === 'remove-btn') {
         let bookItem = event.target.parentElement;
@@ -77,7 +77,7 @@ function addBookItemToPage(book) {
         newBookItem.appendChild(newComponent);
     }
 
-    document.querySelector('.books').appendChild(newBookItem);
+    libraryItem.appendChild(newBookItem);
     return newBookItem;
 }
 
@@ -86,13 +86,11 @@ function removeBookItemFromPage(bookItem) {
         return;
     }
 
-    const libraryItem = document.querySelector('.books');
     libraryItem.removeChild(bookItem);
 }
 
 function closeAddingForm() {
     const addingForm = document.querySelector('div.adding-form');
-    const libraryItem = document.querySelector('div.books');
     const doc = document.querySelector('body');
 
     doc.removeChild(addingForm);
