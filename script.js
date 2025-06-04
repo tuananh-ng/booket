@@ -4,7 +4,10 @@ const bookForm = document.querySelector('form');
 bookForm.addEventListener('submit', () => {
     event.preventDefault();
     addBookToLibrary();
-    addBookItemToPage(library.at(-1));
+    if (library.at(-1).slot !== null) {
+        return;
+    }
+    library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
 
 const closingFormBtn = document.querySelector('#closing-button button');
