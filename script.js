@@ -30,43 +30,40 @@ function addBookItemToPage(book) {
     if (!book) {
         return;
     }
-
     let title = book.getTitle();
     let author = book.getAuthor();
     let readStatus = book.getReadStatus();
 
     const newBookItem = document.createElement('div');
     newBookItem.classList.toggle('book');
-    if (readStatus) {
-        newBookItem.classList.add('read');
-    } else {
-        newBookItem.classList.add('unread');
+    readStatus ? newBookItem.classList.add('read') : newBookItem.classList.add('unread');
+
+    const components = [
+        {
+            'tag': 'div', 'class': 'cover', 'textContent': '',
+        },
+        {
+            'tag': 'p', 'class': 'title', 'textContent': title,
+        },
+        {
+            'tag': 'p', 'class': 'author', 'textContent': author,
+        },
+        {
+            'tag': 'button', 'class': 'edit-btn', 'textContent': 'Edit',
+        },
+        {
+            'tag': 'button', 'class': 'remove-btn', 'textContent': 'Remove',
+        },
+    ];
+    for (component of components) {
+        const newComponent = document.createElement(component.tag);
+        newComponent.classList.toggle(component.class);
+        newComponent.textContent = component.textContent;
+        newBookItem.appendChild(newComponent);
     }
 
-    const newBookCover = document.createElement('div');
-    newBookCover.classList.toggle('cover');
-    const newBookTitle = document.createElement('p');
-    newBookTitle.classList.toggle('title');
-    newBookTitle.textContent = title;
-    const newBookAuthor = document.createElement('p');
-    newBookAuthor.classList.toggle('author');
-    newBookAuthor.textContent = author;
-    const newBookEditBtn = document.createElement('button');
-    newBookEditBtn.classList.toggle('edit-btn');
-    newBookEditBtn.textContent = 'Edit';
-    const newBookRemoveBtn = document.createElement('button');
-    newBookRemoveBtn.classList.toggle('remove-btn');
-    newBookRemoveBtn.textContent = 'Remove';
-    newBookRemoveBtn.addEventListener('click', () => removeBookItemFromPage(newBookItem));
-
-    newBookItem.appendChild(newBookCover);
-    newBookItem.appendChild(newBookTitle);
-    newBookItem.appendChild(newBookAuthor);
-    newBookItem.appendChild(newBookEditBtn);
-    newBookItem.appendChild(newBookRemoveBtn);
-
-    const libraryItem = document.querySelector('.books');
-    libraryItem.appendChild(newBookItem);
+    document.querySelector('.books').appendChild(newBookItem);
+    return newBookItem;
 }
 
 function removeBookItemFromPage(bookItem) {
