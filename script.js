@@ -91,6 +91,7 @@ function Book(title, authors, readStatus = false) {
     this.title = title;
     this.authors = authors;
     this.readStatus = readStatus;
+    this.uuid = crypto.randomUUID();
 }
 
 // getters
@@ -102,6 +103,9 @@ Book.prototype.getAuthors = function () {
 }
 Book.prototype.getReadStatus = function () {
     return this.readStatus;
+}
+Book.prototype.getUUID = function () {
+    return this.uuid;
 }
 
 // setters
