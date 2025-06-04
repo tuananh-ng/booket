@@ -19,7 +19,11 @@ function addBookToLibrary() {
     let readStatus = document.querySelector('form input#read-status-1').checked;
 
     newBook = new Book(title, author, readStatus);
-    library.push(newBook);
+    library.push({
+        'uuid': newBook.getUUID(),
+        'book': newBook,
+        'slot': null,
+    });
 }
 
 function addBookItemToPage(book) {
