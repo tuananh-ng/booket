@@ -189,10 +189,10 @@ button.close {
 .book > button {
     color: white;
 }
-.book > button.edit-btn {
+.book > button.edit {
     background-color: var(--secondary-color);
 }
-.book > button.remove-btn {
+.book > button.remove {
     background-color: #ff4949;
 }
 .book.unread > .title::before {

@@ -65,10 +65,10 @@ function addBookItemToPage(book) {
             'tag': 'p', 'class': 'author', 'textContent': author,
         },
         {
-            'tag': 'button', 'class': 'edit-btn', 'textContent': 'Edit',
+            'tag': 'button', 'class': 'edit', 'textContent': 'Edit',
         },
         {
-            'tag': 'button', 'class': 'remove-btn', 'textContent': 'Remove',
+            'tag': 'button', 'class': 'remove', 'textContent': 'Remove',
         },
     ];
     for (const component of components) {
