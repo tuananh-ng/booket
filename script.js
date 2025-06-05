@@ -1,8 +1,8 @@
 const library = [];
 const libraryItem = document.querySelector('.books');
 
-const bookForm = document.querySelector('form');
-bookForm.addEventListener('submit', () => {
+const content = document.querySelector('body');
+content.addEventListener('submit', () => {
     event.preventDefault();
     event.stopPropagation();
     addBookToLibrary();
@@ -12,7 +12,7 @@ bookForm.addEventListener('submit', () => {
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
 libraryItem.addEventListener('click', () => {
-    if (event.target.className === 'remove-btn') {
+    if (event.target.className === 'remove') {
         let bookItem = event.target.parentElement;
         for (let i = 0; i < library.length; i++) {
             if (bookItem === library[i].slot) {
@@ -23,8 +23,19 @@ libraryItem.addEventListener('click', () => {
     }
 });
 
-const closingFormBtn = document.querySelector('button.close');
-closingFormBtn.addEventListener('click', closeAddingForm);
+
+content.addEventListener('click', () => {
+    if (event.target.className === 'close') {
+        closeForm();
+    }
+
+    if (event.target.className === 'make') {
+        const newForm = makeForm();
+        libraryItem.style.gridColumn = '1 / 2';
+
+        content.appendChild(newForm);
+    }
+});
 
 function addBookToLibrary() {
     let title = document.querySelector('form input#title').value;
@@ -90,12 +101,29 @@ function removeBookItemFromPage(bookItem) {
     libraryItem.removeChild(bookItem);
 }
 
-function closeAddingForm() {
+function closeForm() {
     const addingForm = document.querySelector('form');
-    const doc = document.querySelector('body');
 
-    doc.removeChild(addingForm);
+    content.removeChild(addingForm);
     libraryItem.style.gridColumn = '1 / -1';
+}
+
+// Assumes elementDescription is an object whose properties
+// are attributes of HTML elements
+function makeElement(elementDescription) {
+    const attributes = Array.from(Object.keys(elementDescription));
+    if (!attributes.includes('element')) throw Error('Please specify an element to create!');
+    attributes.splice(attributes.indexOf('element'), 1);
+
+    const newElement = document.createElement(elementDescription.element);
+    for (const attribute of attributes) {
+        if (attribute === 'textContent'){
+            newElement.textContent = elementDescription[attribute];
+            continue;
+        }
+        newElement.setAttribute(attribute, elementDescription[attribute]);
+    }
+    return newElement;
 }
 
 function Book(title, author, readStatus = false) {
