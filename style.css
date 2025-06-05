@@ -63,13 +63,7 @@ button {
     cursor: pointer;   
 }
 
-button.add {
-    color: white;
-    background-color: var(--secondary-color);
-}
-button.add:hover {
-    background-color: #76aeed;
-}
+
 
 form {
     grid-area: 2 / 2 / -1 / -1;
@@ -142,6 +136,19 @@ fieldset.form-row .radio-option:last-child {
     margin-top: 4px;
 }
 
+button.make,
+.form-row:has(button):nth-last-child(-n + 2) > button {
+    background: var(--secondary-color);
+    color: white;
+}
+button.make:hover,
+.form-row:has(button):nth-last-child(-n + 2) > button:hover {
+    background-color: #76aeed;
+}
+.form-row:has(button):has(+ .form-row:last-child) + .form-row > button {
+    background-color: #ff4949;
+}
+
 button.close {
     font-size: 0.8rem;
     font-weight: 200;
@@ -178,7 +185,7 @@ button.close {
     border-radius: var(--card-border-radius);
 }
 .book:nth-child(odd) > .cover {
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 .book:nth-child(even) > .cover {
     background-color: orange;
