@@ -108,6 +108,76 @@ function closeForm() {
     libraryItem.style.gridColumn = '1 / -1';
 }
 
+function makeForm(title = '', author = '', readStatus = false, type = 'add') {
+    const newForm = makeElement({element: 'form', action: '', method: 'post'});
+
+    const closeBtn = makeElement({element: 'button', class: 'close', form: '', textContent: 'x'});
+    newForm.appendChild(closeBtn);
+
+    const essentials = [{'type': 'title', 'value': title}, {'type': 'author', 'value': author}];
+    for (const essential of essentials) {
+        const row = makeElement({element: 'div', class: 'form-row'});
+        const label = makeElement({
+            element: 'label', for: `${essential.type}`, textContent: `${essential.type[0].toUpperCase() + essential.type.slice(1)}`
+        });
+        const input = makeElement({
+            element: 'input', type: 'text', id: `${essential.type}`, name: `book-${essential.type}`, value: `${essential.value}`
+        });
+
+        row.appendChild(label);
+        row.appendChild(input);
+        newForm.appendChild(row);
+    }
+
+    const fieldSet = makeElement({element: 'fieldset', class: 'form-row'});
+    const legend = makeElement({element: 'legend', textContent: 'Read Status'});
+    fieldSet.appendChild(legend);
+
+    const radioOptions = [{'id': 'read-status-0', 'value': 'unread'}, {'id': 'read-status-1', 'value': 'read'}];
+    for (const radioOption of radioOptions) {
+        const row = makeElement({element: 'div', class: 'radio-option'});
+
+        const radio = makeElement({
+            element: 'input', type: 'radio', name: 'read-status', id: `${radioOption.id}`, value: `${radioOption.value}`
+        });
+        if (readStatus === true && radioOption.value === 'read') {
+            radio.toggleAttribute('checked');
+        } else if (readStatus === false && radioOption.value === 'unread') {
+            radio.toggleAttribute('checked');
+        }
+        const label = makeElement({
+            element: 'label', class: 'radio-label', 'for': `${radioOption.id}`,
+            textContent: `${radioOption.value[0].toUpperCase() + radioOption.value.slice(1)}`
+        });
+
+        row.appendChild(radio);
+        row.appendChild(label);
+        fieldSet.appendChild(row);
+    }
+    newForm.appendChild(fieldSet);
+
+    let btnRow = makeElement({element: 'div', class: 'form-row'});
+    let btn = makeElement({element: 'button'});
+    btnRow.appendChild(btn);
+    newForm.appendChild(btnRow);
+    if (type === 'add') {
+        btn.textContent = 'Add';
+        btn.classList.toggle('add');
+        newForm.classList.toggle('add-form');
+    } else if (type === 'edit') {
+        btn.textContent = 'Save';
+        btn.classList.toggle('change');
+        newForm.classList.toggle('edit-form');
+
+        btnRow = makeElement({element: 'div', class: 'form-row'});
+        btn = makeElement({element: 'button', class: 'close', form: '', textContent: 'Discard'});
+        btnRow.appendChild(btn);
+        newForm.appendChild(btnRow);
+    }
+
+    return newForm;
+}
+
 // Assumes elementDescription is an object whose properties
 // are attributes of HTML elements
 function makeElement(elementDescription) {
