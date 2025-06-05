@@ -182,12 +182,6 @@ form > button:first-child {
 .book > .cover {
     border-radius: var(--card-border-radius);
 }
-.book:nth-child(odd) > .cover {
-    background-color: var(--primary-color);
-}
-.book:nth-child(even) > .cover {
-    background-color: orange;
-}
 .book > .title {
     font-weight: bold;
 }
