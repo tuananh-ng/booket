@@ -4,8 +4,39 @@ const libraryItem = document.querySelector('.books');
 
 const content = document.querySelector('body');
 content.addEventListener('submit', () => {
+    const submitBtn = event.target[5];
     event.preventDefault();
     event.stopPropagation();
+
+    if (submitBtn.classList.contains('change')) {
+        const newTitle = document.querySelector('input#title').value;
+        const newAuthor = document.querySelector('input#author').value;
+        const newReadStatus = document.querySelector('input#read-status-1').checked;
+
+        library[currentEdit.bookNumber].book.setTitle(newTitle);
+        library[currentEdit.bookNumber].book.setAuthor(newAuthor);
+        library[currentEdit.bookNumber].book.setReadStatus(newReadStatus);
+
+        if (newReadStatus) {
+            if (currentEdit.bookItem.classList.contains('unread')) {
+                currentEdit.bookItem.classList.toggle('unread');
+                currentEdit.bookItem.classList.toggle('read');
+            }
+        } else {
+            if (currentEdit.bookItem.classList.contains('read')) {
+                currentEdit.bookItem.classList.toggle('read');
+                currentEdit.bookItem.classList.toggle('unread');
+            }
+        }
+        currentEdit.bookItem.childNodes[1].textContent = newTitle;
+        currentEdit.bookItem.childNodes[2].textContent = newAuthor;
+
+        currentEdit.bookItem = null;
+        currentEdit.bookNumber = null;
+        closeForm();
+        return;
+    }
+
     addBookToLibrary();
     if (library.at(-1).slot !== null) {
         return;
