@@ -127,23 +127,26 @@ function addBookItemToPage(book) {
     readStatus ? newBookItem.classList.add('read') : newBookItem.classList.add('unread');
     const components = [
         {
-            'type': 'div', 'class': 'cover', 'textContent': '',
+            'element': 'div', 'class': 'cover', 'textContent': '',
+            'style': `background-color: rgb(
+                ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}
+            );`
         },
         {
-            'type': 'p', 'class': 'title', 'textContent': title,
+            'element': 'p', 'class': 'title', 'textContent': title,
         },
         {
-            'type': 'p', 'class': 'author', 'textContent': author,
+            'element': 'p', 'class': 'author', 'textContent': author,
         },
         {
-            'type': 'button', 'class': 'edit', 'textContent': 'Edit',
+            'element': 'button', 'class': 'edit', 'textContent': 'Edit',
         },
         {
-            'type': 'button', 'class': 'remove', 'textContent': 'Remove',
+            'element': 'button', 'class': 'remove', 'textContent': 'Remove',
         },
     ];
     for (const component of components) {
-        const newComponent = makeElement({element: component.type, class: component.class, textContent: component.textContent});
+        const newComponent = makeElement(component);
         newBookItem.appendChild(newComponent);
     }
 
