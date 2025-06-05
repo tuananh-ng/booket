@@ -147,7 +147,7 @@ button.make:hover,
     background-color: #ff4949;
 }
 
-button.close {
+form > button:first-child {
     font-size: 0.8rem;
     font-weight: 200;
     border: none;
