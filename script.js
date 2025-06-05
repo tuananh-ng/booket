@@ -1,4 +1,5 @@
 const library = [];
+let currentEdit = {bookItem: null, bookNumber: null};
 const libraryItem = document.querySelector('.books');
 
 const content = document.querySelector('body');
@@ -12,9 +13,9 @@ content.addEventListener('submit', () => {
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
 content.addEventListener('click', () => {
+    const bookItem = event.target.parentElement;
     switch (event.target.className) {
         case 'remove':
-            let bookItem = event.target.parentElement;
             for (let i = 0; i < library.length; i++) {
                 if (bookItem === library[i].slot) {
                     library.splice(i, 1);
@@ -34,6 +35,33 @@ content.addEventListener('click', () => {
             }
             break;
         
+        case 'edit':
+            let form = document.querySelector('form');
+            currentEdit.bookItem = bookItem;
+
+            let currentBook = null;
+            for (let i = 0; i < library.length; i++) {
+                if (library[i].slot === currentEdit.bookItem) {
+                    currentBook = library[i].book;
+                    currentEdit.bookNumber = i;
+                    break;
+                }
+            }
+
+            const bookItemTitle = currentBook.getTitle();
+            const bookItemAuthor = currentBook.getAuthor();
+            const bookItemReadStatus = currentBook.getReadStatus();
+            if (!form) {
+                form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
+                libraryItem.style.gridColumn = '1 / 2';
+                content.appendChild(form);
+                return;
+            }
+            closeForm();
+            form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
+            content.appendChild(form);
+            break;     
+
         case 'close':
             closeForm();
             libraryItem.style.gridColumn = '1 / -1';
@@ -160,11 +188,9 @@ function makeForm(title = '', author = '', readStatus = false, type = 'add') {
     if (type === 'add') {
         btn.textContent = 'Add';
         btn.classList.toggle('add');
-        newForm.classList.toggle('add-form');
     } else if (type === 'edit') {
         btn.textContent = 'Save';
         btn.classList.toggle('change');
-        newForm.classList.toggle('edit-form');
 
         btnRow = makeElement({element: 'div', class: 'form-row'});
         btn = makeElement({element: 'button', class: 'close', form: '', textContent: 'Discard'});
