@@ -11,29 +11,32 @@ content.addEventListener('submit', () => {
     }
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
-libraryItem.addEventListener('click', () => {
-    if (event.target.className === 'remove') {
-        let bookItem = event.target.parentElement;
-        for (let i = 0; i < library.length; i++) {
-            if (bookItem === library[i].slot) {
-                library.splice(i, 1);
-            }
-        }
-        removeBookItemFromPage(bookItem);
-    }
-});
-
-
 content.addEventListener('click', () => {
-    if (event.target.className === 'close') {
-        closeForm();
-    }
-
-    if (event.target.className === 'make') {
-        const newForm = makeForm();
-        libraryItem.style.gridColumn = '1 / 2';
-
-        content.appendChild(newForm);
+    switch (event.target.className) {
+        case 'remove':
+            let bookItem = event.target.parentElement;
+            for (let i = 0; i < library.length; i++) {
+                if (bookItem === library[i].slot) {
+                    library.splice(i, 1);
+                    break;
+                }
+            }
+            removeBookItemFromPage(bookItem);
+            break;
+        
+        case 'make':
+            if (document.querySelector('form')) {
+                alert('Please complete your current form or close it to make a new one!');
+            } else {
+                const newForm = makeForm();
+                libraryItem.style.gridColumn = '1 / 2';
+                content.appendChild(newForm);
+            }
+            break;
+        
+        case 'close':
+            closeForm();
+            libraryItem.style.gridColumn = '1 / -1';
     }
 });
 
@@ -99,9 +102,7 @@ function removeBookItemFromPage(bookItem) {
 
 function closeForm() {
     const form = document.querySelector('form');
-
     content.removeChild(form);
-    libraryItem.style.gridColumn = '1 / -1';
 }
 
 function makeForm(title = '', author = '', readStatus = false, type = 'add') {
