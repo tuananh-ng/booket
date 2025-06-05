@@ -61,31 +61,27 @@ function addBookItemToPage(book) {
     let author = book.getAuthor();
     let readStatus = book.getReadStatus();
 
-    const newBookItem = document.createElement('div');
-    newBookItem.classList.toggle('book');
+    const newBookItem = makeElement({element: 'div', class: 'book'});
     readStatus ? newBookItem.classList.add('read') : newBookItem.classList.add('unread');
-
     const components = [
         {
-            'tag': 'div', 'class': 'cover', 'textContent': '',
+            'type': 'div', 'class': 'cover', 'textContent': '',
         },
         {
-            'tag': 'p', 'class': 'title', 'textContent': title,
+            'type': 'p', 'class': 'title', 'textContent': title,
         },
         {
-            'tag': 'p', 'class': 'author', 'textContent': author,
+            'type': 'p', 'class': 'author', 'textContent': author,
         },
         {
-            'tag': 'button', 'class': 'edit', 'textContent': 'Edit',
+            'type': 'button', 'class': 'edit', 'textContent': 'Edit',
         },
         {
-            'tag': 'button', 'class': 'remove', 'textContent': 'Remove',
+            'type': 'button', 'class': 'remove', 'textContent': 'Remove',
         },
     ];
     for (const component of components) {
-        const newComponent = document.createElement(component.tag);
-        newComponent.classList.toggle(component.class);
-        newComponent.textContent = component.textContent;
+        const newComponent = makeElement({element: component.type, class: component.class, textContent: component.textContent});
         newBookItem.appendChild(newComponent);
     }
 
@@ -102,9 +98,9 @@ function removeBookItemFromPage(bookItem) {
 }
 
 function closeForm() {
-    const addingForm = document.querySelector('form');
+    const form = document.querySelector('form');
 
-    content.removeChild(addingForm);
+    content.removeChild(form);
     libraryItem.style.gridColumn = '1 / -1';
 }
 
