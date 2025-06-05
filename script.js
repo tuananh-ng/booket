@@ -34,6 +34,7 @@ content.addEventListener('submit', () => {
         currentEdit.bookItem = null;
         currentEdit.bookNumber = null;
         closeForm();
+        libraryItem.style.gridColumn = '1 / -1';
         return;
     }
 
