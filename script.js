@@ -120,9 +120,8 @@ function addBookItemToPage(book) {
     const components = [
         {
             'element': 'div', 'class': 'cover', 'textContent': '',
-            'style': `background-color: rgb(
-                ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}
-            );`
+            'style': `background-color: rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}); color: rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)});`,
+            'textContent': `${title[0].toUpperCase()}`,
         },
         {
             'element': 'p', 'class': 'title', 'textContent': title,
