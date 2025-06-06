@@ -38,7 +38,7 @@ content.addEventListener('submit', () => {
         return;
     }
 
-    addBookToLibrary();
+    addBookToLibrary(event.target[0].value, event.target[1].value, event.target[4].checked);
     if (library.at(-1).slot !== null) {
         return;
     }
@@ -96,13 +96,10 @@ content.addEventListener('click', () => {
     }
 });
 
-function addBookToLibrary() {
-    let title = document.querySelector('form input#title').value;
-    let author = document.querySelector('form input#author').value;
+function addBookToLibrary(title, author, readStatus = false) {
     if (title.length === 0 || author.length === 0) {
         return;
     }
-    let readStatus = document.querySelector('form input#read-status-1').checked;
 
     newBook = new Book(title, author, readStatus);
     library.push({
