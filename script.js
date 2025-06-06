@@ -62,6 +62,7 @@ content.addEventListener('click', () => {
                 const newForm = makeForm();
                 libraryItem.style.gridColumn = '1 / 2';
                 content.appendChild(newForm);
+                newForm.childNodes[1].childNodes[0].focus(); // focus the title input
             }
             break;
         
@@ -86,6 +87,7 @@ content.addEventListener('click', () => {
             }
             form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
             content.appendChild(form);
+            form.childNodes[1].childNodes[0].focus();
             break;     
 
         case 'close':
