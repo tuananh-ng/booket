@@ -81,11 +81,13 @@ form {
 }
 
 .form-row {
-    margin-bottom: 28px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
+}
+.form-row:not(:last-child) {
+    margin-bottom: 18px;
 }
 
 .form-row input[type="text"] {
