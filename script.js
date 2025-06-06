@@ -4,20 +4,22 @@ const libraryItem = document.querySelector('.books');
 
 const content = document.querySelector('body');
 content.addEventListener('submit', () => {
-    const submitBtn = event.target[5];
     event.preventDefault();
     event.stopPropagation();
 
+    // when submitting, the form gets passed along
+    // so its children hold the needed information
+    const title = event.target[0].value;
+    const author = event.target[1].value;
+    const readStatus = event.target[4].checked;
+    const submitBtn = event.target[5];
+
     if (submitBtn.classList.contains('change')) {
-        const newTitle = document.querySelector('input#title').value;
-        const newAuthor = document.querySelector('input#author').value;
-        const newReadStatus = document.querySelector('input#read-status-1').checked;
+        currentEdit.bookReference.setTitle(title);
+        currentEdit.bookReference.setAuthor(author);
+        currentEdit.bookReference.setReadStatus(readStatus);
 
-        currentEdit.bookReference.setTitle(newTitle);
-        currentEdit.bookReference.setAuthor(newAuthor);
-        currentEdit.bookReference.setReadStatus(newReadStatus);
-
-        if (newReadStatus) {
+        if (readStatus) {
             if (currentEdit.bookItem.classList.contains('unread')) {
                 currentEdit.bookItem.classList.toggle('unread');
                 currentEdit.bookItem.classList.toggle('read');
@@ -28,8 +30,8 @@ content.addEventListener('submit', () => {
                 currentEdit.bookItem.classList.toggle('unread');
             }
         }
-        currentEdit.bookItem.childNodes[1].textContent = newTitle;
-        currentEdit.bookItem.childNodes[2].textContent = newAuthor;
+        currentEdit.bookItem.childNodes[1].textContent = title;
+        currentEdit.bookItem.childNodes[2].textContent = author;
 
         currentEdit.bookItem = null;
         currentEdit.bookReference = null;
@@ -38,7 +40,7 @@ content.addEventListener('submit', () => {
         return;
     }
 
-    addBookToLibrary(event.target[0].value, event.target[1].value, event.target[4].checked);
+    addBookToLibrary(title, author, readStatus);
     if (library.at(-1).slot !== null) {
         return;
     }
