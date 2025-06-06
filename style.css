@@ -11,7 +11,7 @@ body {
 
     display: grid;
     grid-template-columns: 5fr minmax(250px, 1fr);
-    grid-template-rows: clamp(60px, 10%, 80px) 5fr;
+    grid-template-rows: clamp(60px, 10%, 80px) 2fr;
 }
 
 :root {
