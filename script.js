@@ -171,9 +171,8 @@ function makeForm(title = '', author = '', readStatus = false, type = 'add') {
             element: 'label', for: `${essential.type}`, textContent: `${essential.type[0].toUpperCase() + essential.type.slice(1)}`
         });
         const input = makeElement({
-            element: 'input', type: 'text', id: `${essential.type}`, name: `book-${essential.type}`, value: `${essential.value}`
+            element: 'input', type: 'text', id: `${essential.type}`, name: `book-${essential.type}`, value: `${essential.value}`, required: true,
         });
-        input.toggleAttribute('required');
 
         row.appendChild(label);
         row.appendChild(input);
