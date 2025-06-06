@@ -1,5 +1,5 @@
 const library = [];
-let currentEdit = {bookItem: null, bookReference: null};
+const currentEdit = {bookItem: null, bookReference: null};
 const libraryItem = document.querySelector('.books');
 
 const content = document.querySelector('body');
