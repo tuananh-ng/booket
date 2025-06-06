@@ -12,7 +12,7 @@ content.addEventListener('submit', () => {
     const title = event.target[0].value;
     const author = event.target[1].value;
     const readStatus = event.target[4].checked;
-    const submitBtn = event.target[5];
+    const submitBtn = event.submitter;
 
     if (submitBtn.classList.contains('change')) {
         currentEdit.bookReference.setTitle(title);
