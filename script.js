@@ -81,13 +81,11 @@ content.addEventListener('click', () => {
             const bookItemTitle = currentEdit.bookReference.getTitle();
             const bookItemAuthor = currentEdit.bookReference.getAuthor();
             const bookItemReadStatus = currentEdit.bookReference.getReadStatus();
-            if (!form) {
-                form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
-                libraryItem.style.gridColumn = '1 / 2';
-                content.appendChild(form);
-                return;
+            if (!form) { // when there is no form, the library takes up the whole main section
+                libraryItem.style.gridColumn = '1 / 2'; // make space for the new form
+            } else {
+                closeForm();
             }
-            closeForm();
             form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
             content.appendChild(form);
             break;     
