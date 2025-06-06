@@ -1,5 +1,5 @@
 const library = [];
-let currentEdit = {bookItem: null, bookNumber: null};
+let currentEdit = {bookItem: null, bookReference: null};
 const libraryItem = document.querySelector('.books');
 
 const content = document.querySelector('body');
@@ -13,9 +13,9 @@ content.addEventListener('submit', () => {
         const newAuthor = document.querySelector('input#author').value;
         const newReadStatus = document.querySelector('input#read-status-1').checked;
 
-        library[currentEdit.bookNumber].book.setTitle(newTitle);
-        library[currentEdit.bookNumber].book.setAuthor(newAuthor);
-        library[currentEdit.bookNumber].book.setReadStatus(newReadStatus);
+        currentEdit.bookReference.setTitle(newTitle);
+        currentEdit.bookReference.setAuthor(newAuthor);
+        currentEdit.bookReference.setReadStatus(newReadStatus);
 
         if (newReadStatus) {
             if (currentEdit.bookItem.classList.contains('unread')) {
@@ -32,7 +32,7 @@ content.addEventListener('submit', () => {
         currentEdit.bookItem.childNodes[2].textContent = newAuthor;
 
         currentEdit.bookItem = null;
-        currentEdit.bookNumber = null;
+        currentEdit.bookReference = null;
         closeForm();
         libraryItem.style.gridColumn = '1 / -1';
         return;
@@ -71,18 +71,16 @@ content.addEventListener('click', () => {
             let form = document.querySelector('form');
             currentEdit.bookItem = bookItem;
 
-            let currentBook = null;
             for (let i = 0; i < library.length; i++) {
                 if (library[i].slot === currentEdit.bookItem) {
-                    currentBook = library[i].book;
-                    currentEdit.bookNumber = i;
+                    currentEdit.bookReference = library[i].book;
                     break;
                 }
             }
 
-            const bookItemTitle = currentBook.getTitle();
-            const bookItemAuthor = currentBook.getAuthor();
-            const bookItemReadStatus = currentBook.getReadStatus();
+            const bookItemTitle = currentEdit.bookReference.getTitle();
+            const bookItemAuthor = currentEdit.bookReference.getAuthor();
+            const bookItemReadStatus = currentEdit.bookReference.getReadStatus();
             if (!form) {
                 form = makeForm(bookItemTitle, bookItemAuthor, bookItemReadStatus, 'edit');
                 libraryItem.style.gridColumn = '1 / 2';
