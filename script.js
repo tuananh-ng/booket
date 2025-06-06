@@ -19,16 +19,12 @@ content.addEventListener('submit', () => {
         currentEdit.bookReference.setAuthor(author);
         currentEdit.bookReference.setReadStatus(readStatus);
 
-        if (readStatus) {
-            if (currentEdit.bookItem.classList.contains('unread')) {
-                currentEdit.bookItem.classList.toggle('unread');
-                currentEdit.bookItem.classList.toggle('read');
-            }
-        } else {
-            if (currentEdit.bookItem.classList.contains('read')) {
-                currentEdit.bookItem.classList.toggle('read');
-                currentEdit.bookItem.classList.toggle('unread');
-            }
+        if (readStatus && currentEdit.bookItem.classList.contains('unread')) {
+            currentEdit.bookItem.classList.toggle('unread');
+            currentEdit.bookItem.classList.toggle('read');
+        } else if (!readStatus && currentEdit.bookItem.classList.contains('read')) {
+            currentEdit.bookItem.classList.toggle('read');
+            currentEdit.bookItem.classList.toggle('unread');
         }
         currentEdit.bookItem.childNodes[1].textContent = title;
         currentEdit.bookItem.childNodes[2].textContent = author;
