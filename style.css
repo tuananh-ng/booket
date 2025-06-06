@@ -20,6 +20,7 @@ body {
     --shadow-color: rgba(0, 0, 0, 0.2);
     --input-border-radius: 3px;
     --input-border-style: none;
+    --card-background-color: #ffffff;
     --card-border-radius: 8px;
     --card-box-shadow: 2px 4px 2px var(--shadow-color);
     --card-padding: 18px 26px;
@@ -69,7 +70,7 @@ form {
     grid-area: 2 / 2 / -1 / -1;
     position: relative;
     height: clamp(350px, 100%, 450px);
-    background-color: white;
+    background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     border: 1px solid #d6d9dc;
@@ -86,7 +87,7 @@ form {
 }
 
 .form-row input[type="text"] {
-    background-color: white;
+    background-color: var(--card-background-color);
     border: 1px solid #d6d9dc;
     border-radius: 3px;
     width: 100%;
@@ -174,7 +175,7 @@ form > button:first-child {
     width: clamp(200px, 100%, 300px);
     height: clamp(400px, 25%, 600px);
     
-    background-color: white;
+    background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
     padding: var(--card-padding);
