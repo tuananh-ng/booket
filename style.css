@@ -20,6 +20,7 @@ body {
     --shadow-color: rgba(0, 0, 0, 0.2);
     --input-border-radius: 3px;
     --input-border-style: none;
+    --input-border-color: #d6d9dc;
     --card-background-color: #ffffff;
     --card-border-radius: 8px;
     --card-box-shadow: 2px 4px 2px var(--shadow-color);
@@ -73,7 +74,7 @@ form {
     background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
-    border: 1px solid #d6d9dc;
+    border: 1px solid var(--input-border-color);
     box-shadow: var(--card-box-shadow);
     border-style: var(--input-border-style);
 }
@@ -88,7 +89,7 @@ form {
 
 .form-row input[type="text"] {
     background-color: var(--card-background-color);
-    border: 1px solid #d6d9dc;
+    border: 1px solid var(--input-border-color);
     border-radius: 3px;
     width: 100%;
     padding: 7px;
