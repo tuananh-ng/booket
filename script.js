@@ -173,6 +173,7 @@ function makeForm(title = '', author = '', readStatus = false, type = 'add') {
         const input = makeElement({
             element: 'input', type: 'text', id: `${essential.type}`, name: `book-${essential.type}`, value: `${essential.value}`
         });
+        input.toggleAttribute('required');
 
         row.appendChild(label);
         row.appendChild(input);
