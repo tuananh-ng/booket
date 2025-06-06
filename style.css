@@ -60,7 +60,7 @@ body > *:not(.header) {
 button {
     font: inherit;
     font-weight: bold;
-    width: clamp(mincontent, 75%, 250px);
+    width: clamp(min-content, 75%, 250px);
     height: clamp(30px, 25%, 60px);
     border-style: var(--input-border-style);
     border-radius: var(--input-border-radius);
@@ -71,7 +71,7 @@ button {
 form {
     grid-area: 2 / 2 / -1 / -1;
     position: relative;
-    height: clamp(350px, 100%, 450px);
+    height: min-content;
     background-color: var(--card-background-color);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
