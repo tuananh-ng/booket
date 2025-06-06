@@ -64,7 +64,8 @@ button {
     height: clamp(30px, 25%, 60px);
     border-style: var(--input-border-style);
     border-radius: var(--input-border-radius);
-    cursor: pointer;   
+    cursor: pointer;
+    color: white;
 }
 
 form {
@@ -137,24 +138,12 @@ fieldset.form-row .radio-option:last-child {
     margin-top: 4px;
 }
 
-button.make,
-.form-row:has(button):nth-last-child(-n + 2) > button {
-    background: var(--secondary-color);
-    color: white;
-}
-button.make:hover,
-.form-row:has(button):nth-last-child(-n + 2) > button:hover {
-    background-color: #76aeed;
-}
-.form-row:has(button):has(+ .form-row:last-child) + .form-row > button {
-    background-color: #ff4949;
-}
-
 form > button:first-child {
     font-size: 0.8rem;
     font-weight: 200;
     border: none;
     background-color: transparent;
+    color: black;
     position: absolute;
     top: -18px;
     right: 8px;
@@ -187,15 +176,6 @@ form > button:first-child {
 .book > .title {
     font-weight: bold;
 }
-.book > button {
-    color: white;
-}
-.book > button.edit {
-    background-color: var(--secondary-color);
-}
-.book > button.remove {
-    background-color: #ff4949;
-}
 .book.unread > .title::before {
     color: red;
     content: "✘ ";
@@ -203,4 +183,23 @@ form > button:first-child {
 .book.read > .title::before {
     color: green;
     content: "✔ ";
+}
+
+button.make,
+.form-row:has(button):nth-last-child(-n + 2) > button,
+.book > button.edit {
+    background-color: var(--secondary-color);
+}
+button.make:hover,
+.form-row:has(button):nth-last-child(-n + 2) > button:hover,
+.book > button.edit:hover {
+    background-color: #76aeed;
+}
+.form-row:has(button):has(+ .form-row:last-child) + .form-row > button,
+.book > button.remove {
+    background-color: #ff4949;
+}
+.form-row:has(button):has(+ .form-row:last-child) + .form-row > button:hover,
+.book > button.remove:hover {
+    background-color: #d55c5f;
 }
