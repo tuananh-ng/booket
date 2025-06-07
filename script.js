@@ -36,9 +36,8 @@ content.addEventListener('submit', () => {
     }
 
     addBookToLibrary(title, author, readStatus);
-    if (library.at(-1).slot !== null) {
-        return;
-    }
+    if (library.at(-1).slot !== null) return;
+    
     library.at(-1).slot = addBookItemToPage(library.at(-1).book);
 });
 content.addEventListener('click', () => {
@@ -85,9 +84,7 @@ content.addEventListener('click', () => {
 });
 
 function addBookToLibrary(title, author, readStatus = false) {
-    if (title.length === 0 || author.length === 0) {
-        return;
-    }
+    if (!title.length || !author.length) return;
 
     newBook = new Book(title, author, readStatus);
     library.push({
@@ -98,15 +95,13 @@ function addBookToLibrary(title, author, readStatus = false) {
 }
 
 function addBookItemToPage(book) {
-    if (!book) {
-        return;
-    }
+    if (!book) return;
+
     let title = book.getTitle();
     let author = book.getAuthor();
     let readStatus = book.getReadStatus();
 
     const newBookItem = makeElement({element: 'div', class: 'book'});
-    readStatus ? newBookItem.classList.add('read') : newBookItem.classList.add('unread');
     const components = [
         {
             'element': 'div', 'class': 'cover', 'textContent': '',
@@ -130,6 +125,7 @@ function addBookItemToPage(book) {
         const newComponent = makeElement(component);
         newBookItem.appendChild(newComponent);
     }
+    readStatus ? newBookItem.classList.add('read') : newBookItem.classList.add('unread');
 
     libraryItem.appendChild(newBookItem);
     return newBookItem;
@@ -220,8 +216,8 @@ function makeForm(title = '', author = '', readStatus = false, type = 'add') {
 function makeElement(elementDescription) {
     const attributes = Array.from(Object.keys(elementDescription));
     if (!attributes.includes('element')) throw Error('Please specify an element to create!');
-    attributes.splice(attributes.indexOf('element'), 1);
 
+    attributes.splice(attributes.indexOf('element'), 1);
     const newElement = document.createElement(elementDescription.element);
     for (const attribute of attributes) {
         if (attribute === 'textContent'){
