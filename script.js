@@ -63,13 +63,7 @@ content.addEventListener('click', () => {
         case 'edit':
             let form = document.querySelector('form');
             currentEdit.bookItem = bookItem;
-
-            for (let i = 0; i < library.length; i++) {
-                if (library[i].slot === currentEdit.bookItem) {
-                    currentEdit.bookReference = library[i].book;
-                    break;
-                }
-            }
+            currentEdit.bookReference = library.at(library.findIndex(book => book.slot === currentEdit.bookItem)).book;
 
             const bookItemTitle = currentEdit.bookReference.getTitle();
             const bookItemAuthor = currentEdit.bookReference.getAuthor();
