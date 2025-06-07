@@ -45,12 +45,7 @@ content.addEventListener('click', () => {
     const bookItem = event.target.parentElement;
     switch (event.target.className) {
         case 'remove':
-            for (let i = 0; i < library.length; i++) {
-                if (bookItem === library[i].slot) {
-                    library.splice(i, 1);
-                    break;
-                }
-            }
+            library.splice(library.findIndex(book => book.slot === bookItem), 1);
             removeBookItemFromPage(bookItem);
             break;
         
