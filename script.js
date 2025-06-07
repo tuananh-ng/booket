@@ -29,8 +29,7 @@ content.addEventListener('submit', () => {
         currentEdit.bookItem.childNodes[1].textContent = title;
         currentEdit.bookItem.childNodes[2].textContent = author;
 
-        currentEdit.bookItem = null;
-        currentEdit.bookReference = null;
+        Object.keys(currentEdit).forEach((key) => currentEdit[key] = null);
         closeForm();
         libraryItem.style.gridColumn = '1 / -1';
         return;
