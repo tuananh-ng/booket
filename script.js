@@ -156,8 +156,7 @@ function removeBookItemFromPage(bookItem) {
 }
 
 function closeForm() {
-    const form = document.querySelector('form');
-    content.removeChild(form);
+    content.removeChild(document.querySelector('form'));
 }
 
 function makeForm(title = '', author = '', readStatus = false, type = 'add') {
